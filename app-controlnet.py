@@ -1,4 +1,5 @@
 import asyncio
+
 import json
 import logging
 import traceback
@@ -319,4 +320,6 @@ async def handle_websocket_data(websocket: WebSocket, user_id: uuid.UUID):
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    return FileResponse("./static/controlnet.html")
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(dir_path, "static", "controlnet.html")
+    return FileResponse(file_path)
